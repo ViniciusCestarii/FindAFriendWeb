@@ -1,37 +1,29 @@
 'use client'
-import { brazilStates, getCities } from '@/api/ibge/getNameLocation'
+import { cities } from '@/json/cities'
 import Autocomplete from '@mui/material/Autocomplete'
-import CircularProgress from '@mui/material/CircularProgress'
 import TextField from '@mui/material/TextField'
-import { useEffect, useState } from 'react'
+import { ReactNode, useState } from 'react'
+import ListboxComponent from './ListBox'
+import Popper from '@mui/material/Popper'
+import Magnify from 'mdi-material-ui/Magnify'
+import IconButton from '@mui/material/IconButton'
+import { useRouter } from 'next/navigation'
 
 const SearchFriendHome = () => {
-  const [cities, setCities] = useState<string[]>([])
-  const [loadingCities, setLoadingCities] = useState<boolean>(false)
-
-  const [choosedState, setChoosedState] = useState<string>('')
   const [choosedCity, setChoosedCity] = useState<string>('')
 
-  useEffect(() => {
-    const fetchCities = async () => {
-      setCities([])
-      setChoosedCity('')
-      setLoadingCities(true)
-      setCities(await getCities(choosedState))
-      setLoadingCities(false)
-    }
-    fetchCities()
-  }, [choosedState])
-
-  console.log(choosedState, cities, choosedCity)
+  const router = useRouter()
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center w-full">
+    <div className="flex flex-col lg:flex-row justify-between items-center w-full space-y-2 lg:space-y-0">
       <h5 className="sm:text-lg max-w-sm">
         Find your best friend today! Adopt an animal from a local shelter.
       </h5>
-      <div className="flex flex-col lg:flex-row">
-        <span className="text-sm">Find your friend:</span>
+      <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 items-center">
+        <span className="text-sm whitespace-nowrap mr-2">
+          Find your friend by city:
+        </span>
+        {/*
         <Autocomplete
           fullWidth
           disableClearable
@@ -39,31 +31,50 @@ const SearchFriendHome = () => {
           options={brazilStates.map((option) => option.nome)}
           value={choosedState}
           renderInput={(params) => <TextField {...params} label="State" />}
-        />
-        <Autocomplete
-          fullWidth
-          disableClearable
-          onChange={(_, value) => setChoosedCity(value)}
-          options={cities}
-          value={choosedCity}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="City"
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <>
-                    {loadingCities ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </>
-                ),
-              }}
-            />
-          )}
-        />
+  /> */}
+        <div className="flex items-center">
+          <Autocomplete
+            sx={{ minWidth: 220 }}
+            fullWidth
+            disableClearable
+            disableListWrap
+            renderOption={(props, option, state) =>
+              [props, option, state.index] as ReactNode
+            }
+            onChange={(_, value) => setChoosedCity(value)}
+            options={cities.map((option) => option.nome)}
+            value={choosedCity}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                inputProps={{
+                  ...params.inputProps,
+                  sx: {
+                    textAlign: 'center',
+                  },
+                }}
+              />
+            )}
+            ListboxComponent={ListboxComponent}
+            PopperComponent={(props) => (
+              <Popper {...props} sx={{ minWidth: 300 }} placement="top" />
+            )}
+          />
+          <IconButton
+            sx={{
+              ml: 1,
+              ':hover': { color: '#f2db86', borderColor: '#f2db86' },
+              border: 0.25,
+              borderColor: '#ffffff74',
+            }}
+            onClick={() => {
+              const path = `/pets/${choosedCity.replace(/ /g, '-')}`
+              router.push(path)
+            }}
+          >
+            <Magnify />
+          </IconButton>
+        </div>
       </div>
     </div>
   )

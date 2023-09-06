@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         FindAfriendRed: '#F15156',
+        FindAfriendLightRed: '#ec8588',
       },
       fontFamily: {
         title: 'var(--nunito)',
