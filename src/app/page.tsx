@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen p-10 sm:p-16 max-w-7xl mx-auto">
+    <main className="flex flex-col min-h-screen p-10 max-w-7xl mx-auto">
       <header>
         <Logo />
       </header>

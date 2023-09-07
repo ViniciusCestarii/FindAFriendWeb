@@ -15,7 +15,6 @@ function renderRow(props: ListChildComponentProps) {
     top: (style.top as number) + LISTBOX_PADDING,
   }
   if (Object.prototype.hasOwnProperty.call(dataSet, 'group')) {
-    console.log(dataSet)
     return (
       <ListSubheader
         key={dataSet.key}

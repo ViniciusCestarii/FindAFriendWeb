@@ -1,5 +1,5 @@
 'use client'
-import { cities } from '@/json/cities'
+import citiesJson from '@/json/cities.json'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { ReactNode, useState } from 'react'
@@ -8,9 +8,11 @@ import Popper from '@mui/material/Popper'
 import Magnify from 'mdi-material-ui/Magnify'
 import IconButton from '@mui/material/IconButton'
 import { useRouter } from 'next/navigation'
+import City from '@/interfaces/location'
 
 const SearchFriendHome = () => {
   const [choosedCity, setChoosedCity] = useState<string>('')
+  const cities = citiesJson as unknown as City[]
 
   const router = useRouter()
 
@@ -28,7 +30,7 @@ const SearchFriendHome = () => {
           fullWidth
           disableClearable
           onChange={(_, value) => setChoosedState(value)}
-          options={brazilStates.map((option) => option.nome)}
+          options={brazilcities.map((option) => option.nome)}
           value={choosedState}
           renderInput={(params) => <TextField {...params} label="State" />}
   /> */}
@@ -68,8 +70,10 @@ const SearchFriendHome = () => {
               borderColor: '#ffffff74',
             }}
             onClick={() => {
-              const path = `/pets/${choosedCity.replace(/ /g, '-')}`
-              router.push(path)
+              if (choosedCity !== '') {
+                const path = `/pets/${choosedCity.replace(/ /g, '-')}`
+                router.push(path)
+              }
             }}
           >
             <Magnify />
