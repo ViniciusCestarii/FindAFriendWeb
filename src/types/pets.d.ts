@@ -1,6 +1,13 @@
 export type Sex = 'FEMALE' | 'MALE'
 export type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
-export type Specie = 'DOG' | 'CAT' | 'BIRD' | 'RODENT' | 'REPTILE' | 'OTHER'
+export type Specie =
+  | 'DOG'
+  | 'CAT'
+  | 'BIRD'
+  | 'RODENT'
+  | 'REPTILE'
+  | 'FISH'
+  | 'OTHER'
 export type Fase = 'BABY' | 'YOUNG' | 'ADULT' | 'SENIOR'
 
 export interface Image {
@@ -53,4 +60,9 @@ export interface PetSearchParams {
   city?: string
   state?: string
   page: number
+}
+
+export interface SerachManyPetsReturn {
+  pets: Pet[]
+  count: number
 }
