@@ -1,4 +1,4 @@
-import MuiTheme from '@/components/MuiTheme'
+import MuiTheme from '@/components/mui/MuiTheme'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Nunito } from 'next/font/google'

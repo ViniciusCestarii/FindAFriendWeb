@@ -3,12 +3,12 @@ import citiesJson from '@/json/cities.json'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { ReactNode, useState } from 'react'
-import ListboxComponent from './ListBox'
+import ListboxComponent from './mui/ListBox'
 import Popper from '@mui/material/Popper'
 import Magnify from 'mdi-material-ui/Magnify'
 import IconButton from '@mui/material/IconButton'
 import { useRouter } from 'next/navigation'
-import City from '@/interfaces/location'
+import City from '@/types/location'
 
 const SearchFriendHome = () => {
   const [choosedCity, setChoosedCity] = useState<string>('')

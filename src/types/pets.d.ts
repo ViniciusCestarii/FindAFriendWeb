@@ -4,22 +4,22 @@ export type Specie = 'DOG' | 'CAT' | 'BIRD' | 'RODENT' | 'REPTILE' | 'OTHER'
 export type Fase = 'BABY' | 'YOUNG' | 'ADULT' | 'SENIOR'
 
 export interface Image {
-  id: String
-  imageUrl: String
+  id: string
+  url: string
 }
 
 export interface Organization {
-  id: String
-  name: String
-  cnpj: String
-  email: String
-  passwordHash: String
-  phone: String
-  description: String
-  street: String
-  city: String
-  state: String
-  cep: String
+  id: string
+  name: string
+  cnpj: string
+  email: string
+  passwordHash: string
+  phone: string
+  description: string
+  street: string
+  city: string
+  state: string
+  cep: string
   createdAt: Date
   updatedAt: Date
   // eslint-disable-next-line no-use-before-define
@@ -28,10 +28,10 @@ export interface Organization {
 }
 
 export interface Pet {
-  id: String
-  name: String
+  id: string
+  name: string
   sex: Sex
-  description?: String
+  description?: string
   specie: Specie
   size: Size
   birthDate: Date
@@ -39,7 +39,7 @@ export interface Pet {
   updatedAt: Date
   isAdopted: Boolean
   organization: Organization
-  organizationId: String
+  organizationId: string
   images: Image[]
 }
 
