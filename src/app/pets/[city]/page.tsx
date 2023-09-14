@@ -47,7 +47,7 @@ const Pets = () => {
               friends!
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[85vh] overflow-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[85vh] overflow-auto pb-1">
             {cityPets.map((pet, index) => (
               <PetListItem key={pet.id} pet={pet} index={index} />
             ))}
