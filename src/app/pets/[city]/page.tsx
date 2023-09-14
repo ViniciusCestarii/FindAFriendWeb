@@ -23,10 +23,10 @@ const Pets = () => {
 
   useEffect(() => {
     const fetchPets = async () => {
-      let data = await searchPets({ city, state, page: 1 })
+      let data = await searchPets({ city, state, isAdopted: false, page: 1 })
       setCityPets(data.pets)
       if (data.count === 0) {
-        data = await searchPets({ state, page: 1 })
+        data = await searchPets({ state, isAdopted: false, page: 1 })
         setStatePets(data.pets)
       }
       setPetCount(data.count)
@@ -40,11 +40,14 @@ const Pets = () => {
         <section className="lg:min-h-screen max-w-lg min-w-[300px] p-10">
           <Logo />
         </section>
-        <section className="bg-red-200 lg:min-h-screen w-full p-10 flex flex-col">
-          <p className="text-[#0D3B66] font-[500]">
-            Find <span className="font-extrabold">{petCount}</span> new friends!
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <section className="bg-red-200 min-h-screen w-full p-10 flex flex-col">
+          <div className="h-[5vh] flex items-center">
+            <p className="text-subTitle font-[500]]">
+              Find <span className="font-extrabold">{petCount}</span> new
+              friends!
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[85vh] overflow-auto">
             {cityPets.map((pet, index) => (
               <PetListItem key={pet.id} pet={pet} index={index} />
             ))}
@@ -55,16 +58,16 @@ const Pets = () => {
                     borderRadius: '12px',
                     backgroundColor: '#FFFFFF',
                   }}
-                  className="overflow-hidden w-full col-span-2 min-h-[220px] flex flex-col p-4 text-center space-y-3"
+                  className="overflow-hidden w-full col-span-2 h-full flex flex-col p-4 text-center space-y-3"
                 >
                   <CityVariant
                     className="mx-auto text-red-500"
                     fontSize="large"
                   />
-                  <h3 className="text-[#0D3B66] font-semibold text-2xl">
+                  <h3 className="text-subTitle font-semibold text-2xl">
                     {`Ops! We couldn't find any Friends in ${city}`}
                   </h3>
-                  <p className="text-[#0D3B66] text-lg">
+                  <p className="text-subTitle text-lg">
                     But we found some Friends in {state}
                   </p>
                 </Paper>

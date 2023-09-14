@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         FindAfriendRed: '#F15156',
         FindAfriendLightRed: '#ec8588',
+        subTitle: '#0D3B66',
       },
       fontFamily: {
         title: 'var(--nunito)',
