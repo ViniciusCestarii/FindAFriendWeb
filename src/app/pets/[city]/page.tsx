@@ -72,9 +72,7 @@ const Pets = () => {
                   </p>
                 </Paper>
                 {statePets.map((pet, index) => (
-                  <>
-                    <PetListItem key={pet.id} pet={pet} index={index} />
-                  </>
+                  <PetListItem key={pet.id} pet={pet} index={index} />
                 ))}
               </>
             )}
