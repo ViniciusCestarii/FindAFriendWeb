@@ -83,10 +83,15 @@ const Pets = () => {
         </section>
         <section className="bg-red-200 min-h-screen w-full p-10 flex flex-col">
           <div className="h-[5vh] flex items-center">
-            <p className="text-subTitle font-[500]]">
-              Find <span className="font-extrabold">{petCount}</span> new
-              friends!
-            </p>
+            {petCount > 0 ? (
+              <p className="text-subTitle font-[500]]">
+                {' '}
+                Find <span className="font-extrabold">{petCount}</span> new
+                friends!
+              </p>
+            ) : (
+              <p className="text-subTitle font-[500]]">No friends found :(</p>
+            )}
           </div>
           <PetListLocation
             cityPets={cityPets}

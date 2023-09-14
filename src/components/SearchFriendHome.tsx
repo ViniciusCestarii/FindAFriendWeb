@@ -2,7 +2,7 @@
 import citiesJson from '@/json/cities.json'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useState, KeyboardEvent } from 'react'
 import ListboxComponent from './mui/ListBox'
 import Popper from '@mui/material/Popper'
 import Magnify from 'mdi-material-ui/Magnify'
@@ -16,6 +16,13 @@ const SearchFriendHome = () => {
   const [choosedCity, setChoosedCity] = useState<string>('')
 
   const router = useRouter()
+
+  const routeToPetPage = () => {
+    if (choosedCity !== '') {
+      const path = `/pets/${choosedCity.replace(/ /g, '-')}`
+      router.push(path)
+    }
+  }
 
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center w-full space-y-2 lg:space-y-0">
@@ -58,6 +65,9 @@ const SearchFriendHome = () => {
                     textAlign: 'center',
                   },
                 }}
+                onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+                  event.key === 'Enter' && routeToPetPage()
+                }}
               />
             )}
             ListboxComponent={ListboxComponent}
@@ -72,12 +82,7 @@ const SearchFriendHome = () => {
               border: 0.25,
               borderColor: '#ffffff74',
             }}
-            onClick={() => {
-              if (choosedCity !== '') {
-                const path = `/pets/${choosedCity.replace(/ /g, '-')}`
-                router.push(path)
-              }
-            }}
+            onClick={routeToPetPage}
           >
             <Magnify />
           </IconButton>

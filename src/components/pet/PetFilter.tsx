@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import Divider from '@mui/material/Divider'
 import { faseFilterKeys, specieFilterKeys } from '@/types/enums'
 import PetSpecieIcon from '@/components/pet/PetSpecieIcon'
 
@@ -12,6 +11,7 @@ import PetSelectCity from './PetSelectCity'
 import { findState } from '@/helpers/FindState'
 import Earth from 'mdi-material-ui/Earth'
 import CityVariant from 'mdi-material-ui/CityVariant'
+import SubTopic from '../SubTopic'
 
 interface PetFilterProps {
   specieFilter: SpecieFilter
@@ -49,6 +49,7 @@ const PetFilter = ({
   }, [stateFilter, setCityFilter, cityFilter])
   return (
     <>
+      <SubTopic topic="Location" />
       <div>
         <div className="flex justify-center">
           {' '}
@@ -67,8 +68,7 @@ const PetFilter = ({
           setCity={setCityFilter}
         />
       </div>
-      <Divider />
-      <h3 className="font-title ml-3">Filters</h3>
+      <SubTopic topic="Filters" />
       <TextField
         label="Specie"
         value={specieFilter}
