@@ -42,6 +42,7 @@ export interface Pet {
   name: string
   sex: Sex
   description?: string
+  energyLevel: number
   specie: Specie
   size: Size
   birthDate: Date
@@ -60,6 +61,7 @@ export interface PetSearchParams {
   size?: Size
   specie?: Specie
   isAdopted?: boolean
+  energyLevel?: number
   city?: string
   state?: string
   page: number

@@ -12,6 +12,9 @@ import { findState } from '@/helpers/FindState'
 import Earth from 'mdi-material-ui/Earth'
 import CityVariant from 'mdi-material-ui/CityVariant'
 import SubTopic from '../SubTopic'
+import Rating from '@mui/material/Rating'
+import LightningBolt from 'mdi-material-ui/LightningBolt'
+import LightningBoltOutline from 'mdi-material-ui/LightningBoltOutline'
 
 interface PetFilterProps {
   specieFilter: SpecieFilter
@@ -24,6 +27,8 @@ interface PetFilterProps {
   setCityFilter: (city: string) => void
   stateFilter: string
   setStateFilter: (state: string) => void
+  energyLevelFilter: number
+  setEnergyLevelFilter: (energyLevel: number) => void
 }
 
 const PetFilter = ({
@@ -37,6 +42,8 @@ const PetFilter = ({
   setCityFilter,
   stateFilter,
   setStateFilter,
+  energyLevelFilter,
+  setEnergyLevelFilter,
 }: PetFilterProps) => {
   useEffect(() => {
     setFaseFilter('ALL')
@@ -107,6 +114,14 @@ const PetFilter = ({
           ))}
         </TextField>
       )}
+      <Rating
+        value={energyLevelFilter}
+        icon={<LightningBoltOutline />}
+        emptyIcon={<LightningBolt />}
+        onChange={(_, newValue) => {
+          setEnergyLevelFilter(newValue || 0)
+        }}
+      />
       <TextField
         label="Name"
         value={nameFilter}

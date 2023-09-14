@@ -25,6 +25,7 @@ const Pets = () => {
   const [specieFilter, setSpecieFilter] = useState<SpecieFilter>('ALL')
   const [faseFilter, setFaseFilter] = useState<FaseFilter>('ALL')
   const [nameFilter, setNameFilter] = useState<string>('')
+  const [energyLevelFilter, setEnergyLevelFilter] = useState<number>(0)
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -35,6 +36,7 @@ const Pets = () => {
         specie: specieFilter === 'ALL' ? undefined : specieFilter,
         fase: faseFilter === 'ALL' ? undefined : faseFilter,
         name: nameFilter,
+        energyLevel: energyLevelFilter === 0 ? undefined : energyLevelFilter,
         page: 1,
       })
       setCityPets(data.pets)
@@ -46,6 +48,7 @@ const Pets = () => {
           specie: specieFilter === 'ALL' ? undefined : specieFilter,
           fase: faseFilter === 'ALL' ? undefined : faseFilter,
           name: nameFilter,
+          energyLevel: energyLevelFilter === 0 ? undefined : energyLevelFilter,
           page: 1,
         })
         setStatePets(data.pets)
@@ -62,6 +65,7 @@ const Pets = () => {
     nameFilter,
     cityFilter,
     stateFilter,
+    energyLevelFilter,
   ])
   return (
     <div className="max-w-7xl mx-auto min-h-screen">
@@ -79,6 +83,8 @@ const Pets = () => {
             faseFilter={faseFilter}
             setNameFilter={setNameFilter}
             nameFilter={nameFilter}
+            energyLevelFilter={energyLevelFilter}
+            setEnergyLevelFilter={setEnergyLevelFilter}
           />
         </section>
         <section className="bg-red-200 min-h-screen w-full p-10 flex flex-col">
