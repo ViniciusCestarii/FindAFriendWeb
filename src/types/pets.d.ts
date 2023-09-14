@@ -10,6 +10,9 @@ export type Specie =
   | 'OTHER'
 export type Fase = 'BABY' | 'YOUNG' | 'ADULT' | 'SENIOR'
 
+export type SpecieFilter = Specie | 'ALL'
+export type FaseFilter = Fase | 'ALL'
+
 export interface Image {
   id: string
   url: string

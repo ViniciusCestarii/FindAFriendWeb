@@ -1,4 +1,4 @@
-import { Specie } from '@/types/pets'
+import { SpecieFilter } from '@/types/pets'
 import Paw from 'mdi-material-ui/Paw'
 import Dog from 'mdi-material-ui/Dog'
 import Cat from 'mdi-material-ui/Cat'
@@ -8,11 +8,11 @@ import Fish from 'mdi-material-ui/Fish'
 import Bird from 'mdi-material-ui/Bird'
 
 import React from 'react'
-interface SpecieIconProps {
-  specie: Specie
+interface PetSpecieIconProps {
+  specie: SpecieFilter
 }
 
-const SpecieIcon = ({ specie }: SpecieIconProps) => {
+const PetSpecieIcon = ({ specie }: PetSpecieIconProps) => {
   switch (specie) {
     case 'DOG':
       return <Dog />
@@ -26,9 +26,11 @@ const SpecieIcon = ({ specie }: SpecieIconProps) => {
       return <Snake />
     case 'FISH':
       return <Fish />
+    case 'ALL':
+      return <Paw />
     default:
       return <Paw />
   }
 }
 
-export default SpecieIcon
+export default PetSpecieIcon

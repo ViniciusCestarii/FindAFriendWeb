@@ -10,9 +10,10 @@ import IconButton from '@mui/material/IconButton'
 import { useRouter } from 'next/navigation'
 import City from '@/types/location'
 
+const cities = citiesJson as unknown as City[]
+
 const SearchFriendHome = () => {
   const [choosedCity, setChoosedCity] = useState<string>('')
-  const cities = citiesJson as unknown as City[]
 
   const router = useRouter()
 
@@ -44,7 +45,9 @@ const SearchFriendHome = () => {
               [props, option, state.index] as ReactNode
             }
             onChange={(_, value) => setChoosedCity(value)}
-            options={cities.map((option) => option.nome)}
+            options={cities
+              .map((option) => option.nome)
+              .sort((a, b) => -b.localeCompare(a))}
             value={choosedCity}
             renderInput={(params) => (
               <TextField

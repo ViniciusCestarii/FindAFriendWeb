@@ -4,41 +4,82 @@ import City from '@/types/location'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { searchPets } from '@/api/pets/petsRoutes'
-import { Pet } from '@/types/pets'
-import Paper from '@mui/material/Paper'
-import CityVariant from 'mdi-material-ui/CityVariant'
-import PetListItem from '@/components/pet/PetListItem'
+import { FaseFilter, Pet, SpecieFilter } from '@/types/pets'
 import Logo from '@/components/Logo'
+import PetListLocation from '@/components/pet/PetListLocation'
+import PetFilter from '@/components/pet/PetFilter'
 
 const Pets = () => {
   const cities = citiesJson as unknown as City[]
   const params = useParams()
   const city = decodeURIComponent(params.city.replace(/-/g, ' '))
-  const state = cities.find((c) => c.nome === city)?.microrregiao.mesorregiao.UF
+  const state = cities.find((c) => c.nome === city)!.microrregiao.mesorregiao.UF
     .nome
 
   const [cityPets, setCityPets] = useState<Pet[]>([])
   const [statePets, setStatePets] = useState<Pet[]>([])
   const [petCount, setPetCount] = useState<number>(0)
 
+  const [cityFilter, setCityFilter] = useState<string>(city)
+  const [stateFilter, setStateFilter] = useState<string>(state)
+  const [specieFilter, setSpecieFilter] = useState<SpecieFilter>('ALL')
+  const [faseFilter, setFaseFilter] = useState<FaseFilter>('ALL')
+  const [nameFilter, setNameFilter] = useState<string>('')
+
   useEffect(() => {
     const fetchPets = async () => {
-      let data = await searchPets({ city, state, isAdopted: false, page: 1 })
+      let data = await searchPets({
+        city: cityFilter,
+        state: stateFilter,
+        isAdopted: false,
+        specie: specieFilter === 'ALL' ? undefined : specieFilter,
+        fase: faseFilter === 'ALL' ? undefined : faseFilter,
+        name: nameFilter,
+        page: 1,
+      })
       setCityPets(data.pets)
+      setStatePets([])
       if (data.count === 0) {
-        data = await searchPets({ state, isAdopted: false, page: 1 })
+        data = await searchPets({
+          state: stateFilter,
+          isAdopted: false,
+          specie: specieFilter === 'ALL' ? undefined : specieFilter,
+          fase: faseFilter === 'ALL' ? undefined : faseFilter,
+          name: nameFilter,
+          page: 1,
+        })
         setStatePets(data.pets)
       }
       setPetCount(data.count)
     }
 
     fetchPets()
-  }, [city, state])
+  }, [
+    city,
+    state,
+    specieFilter,
+    faseFilter,
+    nameFilter,
+    cityFilter,
+    stateFilter,
+  ])
   return (
     <div className="max-w-7xl mx-auto min-h-screen">
       <div className="flex flex-col lg:flex-row">
-        <section className="lg:min-h-screen max-w-lg min-w-[300px] p-10">
+        <section className="lg:min-h-screen lg:w-[400px] p-10 space-y-4">
           <Logo />
+          <PetFilter
+            setCityFilter={setCityFilter}
+            cityFilter={cityFilter}
+            setStateFilter={setStateFilter}
+            stateFilter={stateFilter}
+            setSpecieFilter={setSpecieFilter}
+            specieFilter={specieFilter}
+            setFaseFilter={setFaseFilter}
+            faseFilter={faseFilter}
+            setNameFilter={setNameFilter}
+            nameFilter={nameFilter}
+          />
         </section>
         <section className="bg-red-200 min-h-screen w-full p-10 flex flex-col">
           <div className="h-[5vh] flex items-center">
@@ -47,36 +88,12 @@ const Pets = () => {
               friends!
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[85vh] overflow-auto pb-1">
-            {cityPets.map((pet, index) => (
-              <PetListItem key={pet.id} pet={pet} index={index} />
-            ))}
-            {statePets.length > 0 && (
-              <>
-                <Paper
-                  sx={{
-                    borderRadius: '12px',
-                    backgroundColor: '#FFFFFF',
-                  }}
-                  className="overflow-hidden w-full col-span-2 h-full flex flex-col p-4 text-center space-y-3"
-                >
-                  <CityVariant
-                    className="mx-auto text-red-500"
-                    fontSize="large"
-                  />
-                  <h3 className="text-subTitle font-semibold text-2xl">
-                    {`Ops! We couldn't find any Friends in ${city}`}
-                  </h3>
-                  <p className="text-subTitle text-lg">
-                    But we found some Friends in {state}
-                  </p>
-                </Paper>
-                {statePets.map((pet, index) => (
-                  <PetListItem key={pet.id} pet={pet} index={index} />
-                ))}
-              </>
-            )}
-          </div>
+          <PetListLocation
+            cityPets={cityPets}
+            statePets={statePets}
+            city={cityFilter}
+            state={stateFilter}
+          />
         </section>
       </div>
     </div>

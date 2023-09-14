@@ -4,6 +4,7 @@ import axios from 'axios'
 export const searchPets = async (
   searchParams: PetSearchParams,
 ): Promise<SerachManyPetsReturn> => {
+  console.log(searchParams)
   const response = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL}pets/search`,
     searchParams,

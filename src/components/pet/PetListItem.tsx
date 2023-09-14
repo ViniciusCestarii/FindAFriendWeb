@@ -1,6 +1,6 @@
 import { Pet } from '@/types/pets'
 import Paper from '@mui/material/Paper'
-import SpecieIcon from '@/components/SpecieIcon'
+import SpecieIcon from '@/components/pet/PetSpecieIcon'
 import PetImage from './PetImage'
 
 interface PetListItemProps {
