@@ -15,14 +15,14 @@ import SubTopic from '../SubTopic'
 import Rating from '@mui/material/Rating'
 import LightningBolt from 'mdi-material-ui/LightningBolt'
 import LightningBoltOutline from 'mdi-material-ui/LightningBoltOutline'
+import { Close } from 'mdi-material-ui'
+import { IconButton } from '@mui/material'
 
 interface PetFilterProps {
   specieFilter: SpecieFilter
   setSpecieFilter: (specie: SpecieFilter) => void
   faseFilter: FaseFilter
   setFaseFilter: (fase: FaseFilter) => void
-  nameFilter: string
-  setNameFilter: (name: string) => void
   cityFilter: string
   setCityFilter: (city: string) => void
   stateFilter: string
@@ -36,8 +36,6 @@ const PetFilter = ({
   specieFilter,
   faseFilter,
   setFaseFilter,
-  setNameFilter,
-  nameFilter,
   cityFilter,
   setCityFilter,
   stateFilter,
@@ -114,22 +112,28 @@ const PetFilter = ({
           ))}
         </TextField>
       )}
-      <Rating
-        value={energyLevelFilter}
-        icon={<LightningBoltOutline />}
-        emptyIcon={<LightningBolt />}
-        onChange={(_, newValue) => {
-          setEnergyLevelFilter(newValue || 0)
-        }}
-      />
-      <TextField
-        label="Name"
-        value={nameFilter}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setNameFilter(event.target.value)
-        }
-        fullWidth
-      />
+      <div className="flex flex-col items-center">
+        <label className="text-sm">Energy Level</label>
+        <div className="flex relative">
+          <Rating
+            value={energyLevelFilter}
+            icon={<LightningBoltOutline />}
+            emptyIcon={<LightningBolt />}
+            onChange={(_, newValue) => {
+              setEnergyLevelFilter(newValue || 0)
+            }}
+          />
+          {energyLevelFilter !== 0 && (
+            <IconButton
+              size="small"
+              className="absolute -right-8 -top-[2px]"
+              onClick={() => setEnergyLevelFilter(0)}
+            >
+              <Close fontSize="small" />
+            </IconButton>
+          )}
+        </div>
+      </div>
     </>
   )
 }

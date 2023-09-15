@@ -13,7 +13,7 @@ const theme = createTheme({
     divider: 'rgb(248, 250, 252)',
     background: {
       default: '#de3137',
-      paper: '#de3137',
+      paper: '#dc242a',
     },
     primary: {
       light: '#f2db86',
@@ -26,6 +26,12 @@ const theme = createTheme({
       main: '#F15156',
       dark: '#e7272e',
       contrastText: 'rgb(248, 250, 252)',
+    },
+    info: {
+      light: '#2471b9',
+      main: '#13528c',
+      dark: '#0D3B66',
+      contrastText: 'rgb(249, 252, 248)',
     },
   },
 })

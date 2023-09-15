@@ -2,12 +2,14 @@
 import citiesJson from '@/json/cities.json'
 import City from '@/types/location'
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, ChangeEvent } from 'react'
 import { searchPets } from '@/api/pets/petsRoutes'
 import { FaseFilter, Pet, SpecieFilter } from '@/types/pets'
 import Logo from '@/components/Logo'
 import PetListLocation from '@/components/pet/PetListLocation'
 import PetFilter from '@/components/pet/PetFilter'
+import TextField from '@mui/material/TextField'
+import Magnify from 'mdi-material-ui/Magnify'
 
 const Pets = () => {
   const cities = citiesJson as unknown as City[]
@@ -81,14 +83,12 @@ const Pets = () => {
             specieFilter={specieFilter}
             setFaseFilter={setFaseFilter}
             faseFilter={faseFilter}
-            setNameFilter={setNameFilter}
-            nameFilter={nameFilter}
             energyLevelFilter={energyLevelFilter}
             setEnergyLevelFilter={setEnergyLevelFilter}
           />
         </section>
-        <section className="bg-red-200 min-h-screen w-full p-10 flex flex-col">
-          <div className="h-[5vh] flex items-center">
+        <section className="bg-red-200 min-h-screen w-full pb-5 p-10 lg:pb-10 flex flex-col">
+          <div className="h-min-[5vh] flex flex-col space-y-4 pb-4 sm:space-y-0 sm:flex-row sm:pb-0 items-center justify-between">
             {petCount > 0 ? (
               <p className="text-subTitle font-[500]]">
                 {' '}
@@ -98,6 +98,22 @@ const Pets = () => {
             ) : (
               <p className="text-subTitle font-[500]]">No friends found :(</p>
             )}
+            <TextField
+              size="small"
+              color="info"
+              fullWidth
+              label="Find a friend by name"
+              className="max-w-xs"
+              value={nameFilter}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setNameFilter(event.target.value)
+              }
+              InputLabelProps={{ sx: { color: '#517ca4' } }}
+              InputProps={{
+                sx: { color: '#13528c' },
+                startAdornment: <Magnify fontSize="small" />,
+              }}
+            />
           </div>
           <PetListLocation
             cityPets={cityPets}
