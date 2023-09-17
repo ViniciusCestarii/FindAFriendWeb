@@ -15,7 +15,7 @@ import SubTopic from '../SubTopic'
 import Rating from '@mui/material/Rating'
 import LightningBolt from 'mdi-material-ui/LightningBolt'
 import LightningBoltOutline from 'mdi-material-ui/LightningBoltOutline'
-import { Close } from 'mdi-material-ui'
+import Close from 'mdi-material-ui/Close'
 import { IconButton } from '@mui/material'
 
 interface PetFilterProps {

@@ -25,23 +25,14 @@ const SearchFriendHome = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center w-full space-y-2 lg:space-y-0">
-      <h5 className="sm:text-lg max-w-sm">
+    <div className="flex flex-col lg:flex-row justify-between items-center w-full space-y-8 lg:space-y-0">
+      <h5 className="sm:text-lg max-w-sm text-center lg:text-start">
         Find your best friend today! Adopt an animal from a local shelter.
       </h5>
       <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 items-center">
         <span className="text-sm whitespace-nowrap mr-2">
           Find your friend by city:
         </span>
-        {/*
-        <Autocomplete
-          fullWidth
-          disableClearable
-          onChange={(_, value) => setChoosedState(value)}
-          options={brazilcities.map((option) => option.nome)}
-          value={choosedState}
-          renderInput={(params) => <TextField {...params} label="State" />}
-  /> */}
         <div className="flex items-center">
           <Autocomplete
             sx={{ minWidth: 220 }}

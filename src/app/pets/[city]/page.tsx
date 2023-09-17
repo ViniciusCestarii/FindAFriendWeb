@@ -10,6 +10,7 @@ import PetListLocation from '@/components/pet/PetListLocation'
 import PetFilter from '@/components/pet/PetFilter'
 import TextField from '@mui/material/TextField'
 import Magnify from 'mdi-material-ui/Magnify'
+import PageWrapper from '@/components/PageWrapper'
 
 const Pets = () => {
   const cities = citiesJson as unknown as City[]
@@ -70,7 +71,7 @@ const Pets = () => {
     energyLevelFilter,
   ])
   return (
-    <div className="max-w-7xl mx-auto min-h-screen">
+    <PageWrapper noPadding>
       <div className="flex flex-col lg:flex-row">
         <section className="lg:min-h-screen lg:w-[400px] p-10 space-y-4">
           <Logo />
@@ -123,7 +124,7 @@ const Pets = () => {
           />
         </section>
       </div>
-    </div>
+    </PageWrapper>
   )
 }
 
