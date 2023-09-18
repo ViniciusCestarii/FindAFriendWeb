@@ -44,6 +44,7 @@ export interface PetSearchParams {
   city?: string
   state?: string
   page: number
+  petNumber?: number
 }
 
 export interface SerachManyPetsReturn {

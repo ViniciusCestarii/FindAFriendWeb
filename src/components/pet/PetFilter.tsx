@@ -92,7 +92,7 @@ const PetFilter = ({
           </MenuItem>
         ))}
       </TextField>
-      {specieFilter !== 'ALL' && (
+      {specieFilter !== 'ALL' && specieFilter !== 'OTHER' && (
         <TextField
           label="Fase"
           value={faseFilter}

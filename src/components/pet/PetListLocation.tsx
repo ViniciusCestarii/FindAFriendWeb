@@ -16,7 +16,7 @@ const PetListLocation = ({
   state,
 }: PetListItemProps) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[85vh] overflow-auto pb-1">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-h-[85vh] overflow-auto pb-1">
       {cityPets.map((pet, index) => (
         <PetListItem key={pet.id} pet={pet} index={index} />
       ))}

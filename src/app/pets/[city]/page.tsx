@@ -11,6 +11,9 @@ import PetFilter from '@/components/pet/PetFilter'
 import TextField from '@mui/material/TextField'
 import Magnify from 'mdi-material-ui/Magnify'
 import PageWrapper from '@/components/PageWrapper'
+import Pagination from '@mui/material/Pagination'
+import PaginationItem from '@mui/material/PaginationItem'
+import Paw from 'mdi-material-ui/Paw'
 
 const Pets = () => {
   const cities = citiesJson as unknown as City[]
@@ -22,6 +25,7 @@ const Pets = () => {
   const [cityPets, setCityPets] = useState<Pet[]>([])
   const [statePets, setStatePets] = useState<Pet[]>([])
   const [petCount, setPetCount] = useState<number>(0)
+  const [petPage, setPetPage] = useState<number>(1)
 
   const [cityFilter, setCityFilter] = useState<string>(city)
   const [stateFilter, setStateFilter] = useState<string>(state)
@@ -40,7 +44,7 @@ const Pets = () => {
         fase: faseFilter === 'ALL' ? undefined : faseFilter,
         name: nameFilter,
         energyLevel: energyLevelFilter === 0 ? undefined : energyLevelFilter,
-        page: 1,
+        page: petPage,
       })
       setCityPets(data.pets)
       setStatePets([])
@@ -52,7 +56,8 @@ const Pets = () => {
           fase: faseFilter === 'ALL' ? undefined : faseFilter,
           name: nameFilter,
           energyLevel: energyLevelFilter === 0 ? undefined : energyLevelFilter,
-          page: 1,
+          page: petPage,
+          petNumber: 14,
         })
         setStatePets(data.pets)
       }
@@ -69,6 +74,7 @@ const Pets = () => {
     cityFilter,
     stateFilter,
     energyLevelFilter,
+    petPage,
   ])
   return (
     <PageWrapper noPadding>
@@ -88,8 +94,8 @@ const Pets = () => {
             setEnergyLevelFilter={setEnergyLevelFilter}
           />
         </section>
-        <section className="bg-red-200 min-h-screen w-full pb-5 p-10 lg:pb-10 flex flex-col">
-          <div className="h-min-[5vh] flex flex-col space-y-4 pb-4 sm:space-y-0 sm:flex-row sm:pb-0 items-center justify-between">
+        <section className="bg-red-200 min-h-screen w-full pb-5 p-10 lg:pb-5 flex flex-col">
+          <div className="h-min-[5vh] flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:pb-0 items-center justify-between">
             {petCount > 0 ? (
               <p className="text-subTitle font-[500]]">
                 {' '}
@@ -115,6 +121,23 @@ const Pets = () => {
                 startAdornment: <Magnify fontSize="small" />,
               }}
             />
+          </div>
+          <div className="flex justify-center my-2">
+            {petCount > 0 && (
+              <Pagination
+                color="secondary"
+                className="bg-FindAFriendYellow p-1 rounded-2xl"
+                count={Math.ceil(petCount / 16)}
+                page={petPage}
+                onChange={(_, page) => setPetPage(page)}
+                renderItem={(item) => (
+                  <PaginationItem
+                    slots={{ previous: Paw, next: Paw }}
+                    {...item}
+                  />
+                )}
+              />
+            )}
           </div>
           <PetListLocation
             cityPets={cityPets}

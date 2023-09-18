@@ -12,6 +12,8 @@ const config: Config = {
         FindAFriendDarkRed: '#e7272e',
         FindAfriendRed: '#F15156',
         FindAfriendLightRed: '#ec8588',
+
+        FindAFirendDarkYellow: '#ebc744',
         FindAFriendYellow: '#F4D35E',
         FindAFriendLightYellow: '#f2db86',
         subTitle: '#0D3B66',
