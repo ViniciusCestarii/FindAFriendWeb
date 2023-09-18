@@ -9,6 +9,7 @@ const nunito = Nunito({ subsets: ['latin'], variable: '--nunito' })
 
 export const metadata: Metadata = {
   title: 'Find a Friend',
+  keywords: ['adopt', 'animal', 'shelter', 'dog', 'cat', 'pet', 'adoção'],
   description:
     'Find your best friend today! Adopt an animal from a local shelter.',
 }

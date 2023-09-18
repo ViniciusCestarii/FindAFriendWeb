@@ -13,7 +13,7 @@ const HalfPageWrapper = ({ children }: HalfPageWrapperProps) => {
         <div className="w-full h-full max-w-xl">{children}</div>
         <div className="overflow-hidden w-auto -mb-10">
           <Image
-            alt="Login"
+            alt="Cute Pet"
             src={`/pet${Math.floor(Math.random() * 3) + 1}.jpg`}
             width={900}
             height={1200}
