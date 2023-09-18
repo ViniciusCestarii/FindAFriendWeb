@@ -9,7 +9,7 @@ const Login = () => {
       <header>
         <Logo />
       </header>
-      <section className="flex flex-col items-center lg:mt-20 h-full w-full space-y-12 mb-4">
+      <section className="flex flex-col items-center mt-8 lg:mt-20 h-full w-full space-y-12 mb-4">
         <h1 className="text-5xl font-bold font-title">Login</h1>
         <LogInForm />
         <AskToSignUp />
