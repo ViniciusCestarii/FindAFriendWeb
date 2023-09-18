@@ -8,8 +8,7 @@ const inputTypes: InputTypes = {
     message: 'Invalid email.',
   },
   password: {
-    regex:
-      /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+{}[\]:;<>,.?~\\-]{8,}$/,
+    regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
     message:
       'The password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number.',
   },
