@@ -8,7 +8,7 @@ const AskToLogIn = () => {
       onClick={() => router.push('/organizations/login')}
       className="font-[300] hover:text-FindAFriendLightYellow cursor-pointer"
     >
-      Already have an account? Log in here!
+      Already have an organization account? Log in here!
     </button>
   )
 }

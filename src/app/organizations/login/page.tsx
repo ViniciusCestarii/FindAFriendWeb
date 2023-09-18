@@ -9,9 +9,11 @@ const Login = () => {
       <header>
         <Logo />
       </header>
-      <section className="flex flex-col items-center mt-8 lg:mt-20 h-full w-full space-y-12 mb-4">
-        <h1 className="text-5xl font-bold font-title">Login</h1>
-        <LogInForm />
+      <section className="flex flex-col items-center justify-between pt-8 lg:pt-20 w-full h-full">
+        <div className="space-y-12 flex flex-col items-center w-full">
+          <h1 className="text-5xl font-bold font-title">Log in</h1>
+          <LogInForm />
+        </div>
         <AskToSignUp />
       </section>
     </HalfPageWrapper>

@@ -9,7 +9,7 @@ const AskToSignUp = () => {
       onClick={() => router.push('/organizations/signup')}
       className="font-[300] hover:text-FindAFriendLightYellow cursor-pointer"
     >
-      Don't have an account? Sign up here!
+      Don't have an organization account? Sign up here!
     </button>
   )
 }
