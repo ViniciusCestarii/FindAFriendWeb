@@ -1,6 +1,6 @@
 import Logo from '@/components/Logo'
 import PageWrapper from '@/components/PageWrapper'
-import SearchFriendHome from '@/components/SearchFriendHome'
+import SearchFriendHome from '@/components/home/SearchFriendHome'
 import AskOrganization from '@/components/home/AskOrganization'
 import Image from 'next/image'
 

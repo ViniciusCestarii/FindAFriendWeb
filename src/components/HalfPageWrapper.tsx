@@ -9,7 +9,7 @@ interface HalfPageWrapperProps {
 const HalfPageWrapper = ({ children }: HalfPageWrapperProps) => {
   return (
     <PageWrapper masxHeightScreen>
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:gap-x-4 h-full">
+      <div className="flex flex-col lg:flex-row lg:gap-x-4 h-full">
         <div className="w-full h-full max-w-xl">{children}</div>
 
         <div className="overflow-hidden w-auto -mb-10">
