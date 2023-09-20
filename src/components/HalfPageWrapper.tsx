@@ -10,7 +10,7 @@ const HalfPageWrapper = ({ children }: HalfPageWrapperProps) => {
   return (
     <PageWrapper masxHeightScreen>
       <div className="flex flex-col lg:flex-row lg:gap-x-4 h-full">
-        <div className="w-full h-full max-w-xl flex flex-col max-h-[740px] mx-auto">
+        <div className="w-full h-full max-w-xl flex flex-col lg:max-h-[760px] mx-auto">
           {children}
         </div>
         <div className="overflow-hidden w-full h-full lg:mt-10 -mb-10 lg:mb-0 max-h-[160px] lg:max-h-fit">

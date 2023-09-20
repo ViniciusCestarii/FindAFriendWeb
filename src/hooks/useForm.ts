@@ -16,12 +16,25 @@ const inputTypes: InputTypes = {
     regex: /^\d+$/,
     message: 'Must contain only numbers.',
   },
+  cnpj: {
+    regex: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
+    message: 'Invalid CNPJ.',
+  },
+  cep: {
+    regex: /^\d{5}-\d{3}$/,
+    message: 'Invalid CEP.',
+  },
 }
 
 const useForm = (type?: keyof InputTypes) => {
   const [value, setValue] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [helperText, setHelperText] = useState<string | null>(null)
+
+  const removeError = () => {
+    setHelperText(null)
+    setError(false)
+  }
 
   const validate = (value: string) => {
     if (!type) return true
@@ -34,15 +47,54 @@ const useForm = (type?: keyof InputTypes) => {
       setError(true)
       return false
     } else {
-      setHelperText(null)
-      setError(false)
+      removeError()
       return true
     }
   }
 
   const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (error) validate(target.value)
-    setValue(target.value)
+    switch (type) {
+      case 'cep': {
+        if (error) validate(target.value.slice(0, 9))
+        const cepNumbers = target.value.replace(/\D/g, '')
+        let formattedCep = ''
+
+        for (let i = 0; i < cepNumbers.length; i++) {
+          if (i === 5) {
+            formattedCep += '-'
+          }
+          formattedCep += cepNumbers[i]
+        }
+        console.log(target.value, formattedCep)
+
+        setValue(formattedCep.slice(0, 9))
+        break
+      }
+      case 'cnpj': {
+        if (error) validate(target.value)
+        const inputValue = target.value.replace(/\D/g, '')
+        let formattedCnpj = ''
+        for (let i = 0; i < inputValue.length; i++) {
+          if (i === 2 || i === 5) {
+            formattedCnpj += '.'
+          } else if (i === 8) {
+            formattedCnpj += '/'
+          } else if (i === 12) {
+            formattedCnpj += '-'
+          }
+          if (target.value !== '') {
+            formattedCnpj += inputValue[i]
+          }
+        }
+
+        setValue(formattedCnpj.slice(0, 18))
+        break
+      }
+      default:
+        if (error) validate(target.value)
+        setValue(target.value)
+        break
+    }
   }
 
   const isValid = () => {
@@ -61,7 +113,9 @@ const useForm = (type?: keyof InputTypes) => {
     setValue,
     onChange,
     error,
+    setError: (error: boolean) => setError(error),
     helperText,
+    setHelperText: (text: string | null) => setHelperText(text),
     validate: () => validate(value),
     isValid: () => isValid(),
     onBlur: () => validate(value),

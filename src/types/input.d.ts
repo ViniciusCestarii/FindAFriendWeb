@@ -7,4 +7,6 @@ export interface InputTypes {
   email: InputType
   password: InputType
   number: InputType
+  cnpj: InputType
+  cep: InputType
 }
