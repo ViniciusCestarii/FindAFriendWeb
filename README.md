@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Find A Friend 🐶
 
-## Getting Started
+![image](https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/6572571a-8539-407d-88c0-a22a34b6669e)
 
-First, run the development server:
+## ❓ What's Find A Friend?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+FindAFriend is a web application for individuals seeking to adopt pets, where organizations can sign up and post their pets for anyone looking to find a new friend and contact them!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📱 How to install in your machine
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Required to install and setup:
+- Git
+- Node.js
+- FindAFriendBack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To install FindAFriendBack follow the steps: https://github.com/ViniciusCestarii/FindAFriendBack
 
-## Learn More
+1. install the above dependecies
+2. clone this repository in your machine using: `git clone https://github.com/ViniciusCestarii/FindAFriendWeb.git`
+3. in root of the project run: `npm i`
+4. in root of the project run: `npm run dev`
+5. open localhost:3000 and enjoy!
 
-To learn more about Next.js, take a look at the following resources:
+## 👀 Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### List of pets
+![image](https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/cc15ee9a-4041-4c69-81c9-2e36d17d81a2)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### List of pets, filtering by adult dogs
+![image](https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/923df51c-3d9e-4f75-b8af-e9acea5505e3)
 
-## Deploy on Vercel
+### Mobile Screen, It works on any Screen!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/15af63d5-f6ed-4e40-bda1-4ea1a9045eca)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
