@@ -12,7 +12,7 @@ const AskOrganization = () => {
         className="flex gap-x-1 items-center hover:text-FindAFriendLightYellow cursor-pointer"
       >
         <HomeModern />
-        <span className="text-sm">Are you a organization? Click here!</span>
+        <span className="text-sm">Are you an organization? Click here!</span>
       </div>
     </div>
   )
