@@ -31,5 +31,7 @@ To install FindAFriendBack follow the steps: https://github.com/ViniciusCestarii
 
 ### Mobile Screen, It works on any Screen!
 
-![image](https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/15af63d5-f6ed-4e40-bda1-4ea1a9045eca)
+<div align="center">
+  <img src="https://github.com/ViniciusCestarii/FindAFriendWeb/assets/124843824/15af63d5-f6ed-4e40-bda1-4ea1a9045eca">
+</div>
 
